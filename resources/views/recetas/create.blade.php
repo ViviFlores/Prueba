@@ -11,7 +11,7 @@
         <form method="POST" action={{route('recetas.store')}} novalidate>
             @csrf
             <div class="form-group">
-                <label for="nombre"> Nombre Receta </label>
+                <label for="nombre"> Nombre Recetassssss </label>
                 <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" id="nombre" placeholder="Nombre Receta" value={{old('nombre')}}>
                 @error('nombre')
                 <span class="invalid-feedback d-block" role="alert">
