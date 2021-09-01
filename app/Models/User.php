@@ -41,4 +41,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*RelAación 1:n Usuario-Recetas*/
+    /*Un usuario pouede tener multiples recetas*/
+    public function userRecetas(){
+        return $this->hasMany(Receta::class);
+    } 
+
+    //Evento usuario-perfil
+    protected static function booted(){
+        parent::booted();
+
+        static::created(function($user){
+            $user->userPerfil()->create();
+
+        });
+    }
+
+    //relación 1:1 usuario-perfil
+    public function userPerfil(){
+        return $this->hasOne(Perfil::class);
+    }
 }

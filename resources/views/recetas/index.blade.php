@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('botones')
-    <a class="btn btn-primary" href="{{route('recetas.create')}}">Crear Receta</a>
+    @include('ui.navegacion')
 @endsection
 
 @section('content')
@@ -16,11 +16,19 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($userRecetas as $userReceta)
             <tr>
-                <td>Pizza de camarones</td>
-                <td>Pizzas</td>
-                <td>-------------</td>
+                <td>{{$userReceta->nombre}}</td>
+                <td>{{$userReceta->categoriaReceta->nombre}}</td>
+                <td>
+                    <a href="{{route('recetas.show', ['receta'=>$userReceta->id])}}" class="btn btn-success d-block">Ver</a>
+                    <a href="{{route('recetas.edit', ['receta'=>$userReceta->id])}}" class="btn btn-dark d-block mt-1">Editar</a>
+                    <eliminar-receta receta-id={{$userReceta->id}}></eliminar-receta>
+
+                </td>
             </tr>
+            @endforeach
+
         </tbody>
     </table>
 </div>

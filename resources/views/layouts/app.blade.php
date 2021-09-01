@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    @yield('styles')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -58,6 +59,12 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('recetas.index')}}">
+                                    {{'Ver Recetas'}}
+                                </a>
+                                <a class="dropdown-item" href="{{route('perfiles.show', ['perfil'=>Auth::user()->id])}}">
+                                    {{'Ver Perfil'}}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -87,5 +94,6 @@
 
 
     </div>
+    @yield('script')
 </body>
 </html>
